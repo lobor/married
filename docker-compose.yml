@@ -14,6 +14,8 @@ services:
       SUPABASE_SERVICE_KEY: ${SERVICE_ROLE_KEY}
 
   kong:
+    depends_on:
+      - studio
     container_name: supabase-kong
     image: kong:2.1
     restart: unless-stopped
@@ -28,6 +30,11 @@ services:
       KONG_PLUGINS: request-transformer,cors,key-auth,acl
     volumes:
       - ./volumes/api/kong.yml:/var/lib/kong/kong.yml
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.server.rule=Host(`orpheeetlionel.ddns.net`) && (PathPrefix(`/rest`) || PathPrefix(`/realtime`))"
+      # - "traefik.http.routers.server.tls=true"
+      # - "traefik.http.routers.server.tls.certresolver=orpheeetlionelServer"
 
   auth:
     container_name: supabase-auth
@@ -149,3 +156,46 @@ services:
     volumes:
       # - ./volumes/db/data:/var/lib/postgresql/data
       - ./volumes/db/init:/docker-entrypoint-initdb.d
+
+  traefik:
+    restart: always
+    image: "traefik:v2.5"
+    container_name: "traefikMarried"
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      # - "--entrypoints.websecure.address=:443"
+      # - "--certificatesResolvers.orpheeetlionelClient.acme.email=lionel.bertrand@ymail.com"
+      # - "--certificatesResolvers.orpheeetlionelClient.acme.storage=client.json"
+      # - "--certificatesResolvers.orpheeetlionelClient.acme.httpChallenge.entryPoint=web"
+      # - "--certificatesResolvers.orpheeetlionelServer.acme.email=lionel.bertrand@ymail.com"
+      # - "--certificatesResolvers.orpheeetlionelServer.acme.storage=server.json"
+      # - "--certificatesResolvers.orpheeetlionelServer.acme.httpChallenge.entryPoint=web"
+    ports:
+      - "80:80"
+      - "443:443"
+      # - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+
+  front:
+    depends_on:
+      - kong
+      - traefik
+      - realtime
+    container_name: front
+    image: 'node:14.15.1-alpine'
+    command: npm run dev
+    ports:
+      - 4000:4000
+    volumes:
+      - './:/home/node/app'
+    working_dir: /home/node/app
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.client.rule=Host(`orpheeetlionel.ddns.net`)"
+      # - "traefik.http.routers.client.tls=true"
+      # - "traefik.http.routers.client.tls.certresolver=orpheeetlionelClient"
