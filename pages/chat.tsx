@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import { useInsert, useRealtime } from "react-supabase";
+import { useUser } from "../providers/user";
 
 const Chat = () => {
+  const { user } = useUser();
   const messagesRef = useRef<HTMLDivElement>(null);
   const [pseudo, setPseudo] = useState<string>();
   const [{ data, fetching: fetchingMessages }] = useRealtime("messages");
@@ -14,6 +16,7 @@ const Chat = () => {
       await execute({
         ...values,
         table: localStorage.getItem("table"),
+        user_id: user?.id,
         pseudo,
       });
       formik.resetForm();

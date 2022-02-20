@@ -158,7 +158,6 @@ services:
       - ./volumes/db/init:/docker-entrypoint-initdb.d
 
   traefik:
-    restart: always
     image: "traefik:v2.5"
     container_name: "traefikMarried"
     command:

@@ -12,9 +12,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="text-center">
+      <main className="text-center px-4">
         <div className="">
-          <Image {...Nous} />
+          <Image {...Nous} width={150} height={150} />
         </div>
         <div className="h-[1px] bg-[#c6a346] my-2 mx-2 mb-4" />
         <div className="">
