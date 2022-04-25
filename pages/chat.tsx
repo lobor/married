@@ -1,9 +1,12 @@
 import { useFormik } from "formik";
 import { useEffect, useRef, useState } from "react";
 import { useInsert, useRealtime } from "react-supabase";
+import { useTitle } from "../providers/title";
 import { useUser } from "../providers/user";
 
 const Chat = () => {
+  const {setTitle} = useTitle();
+  useEffect(() => setTitle("Chat"), []);
   const { user } = useUser();
   const messagesRef = useRef<HTMLDivElement>(null);
   const [pseudo, setPseudo] = useState<string>();

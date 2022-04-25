@@ -1,16 +1,28 @@
+import { useEffect } from "react";
+import { useTitle } from "../providers/title";
+
 const Menu = () => {
+  const {setTitle} = useTitle();
+  useEffect(() => setTitle("Menu"), []);
   return (
     <div className="mx-5">
       <h2 className="font-['MoonTime'] text-[3rem] text-[#c6a346] text-center mb-5">
         Entree
       </h2>
-      <div className="text-center">Salade composée : salade verte, pommes marinées, framboise vinaigrette au cassis</div>
+      <div className="text-center">
+        Salade composée : salade verte, pommes marinées, framboise vinaigrette
+        au cassis
+      </div>
       <h2 className="font-['MoonTime'] text-[3rem] text-[#c6a346] text-center mb-5 mt-20">
         Plats
       </h2>
-      <div className="text-center">Magret de canard (sauce au poivre / aux truffes)</div>
+      <div className="text-center">
+        Magret de canard (sauce au poivre / aux truffes)
+      </div>
       <div className="text-center">Cordon bleu (menu enfant)</div>
-      <div className="text-center">Garnitures : Riz basmati et sa brunoise de légumes</div>
+      <div className="text-center">
+        Garnitures : Riz basmati et sa brunoise de légumes
+      </div>
       {/* <div className="h-[1px] bg-[#c6a346] my-2 mx-2" /> */}
       <h2 className="font-['MoonTime'] text-[3rem] text-[#c6a346] text-center mb-5 mt-20">
         Assortiment de desserts
