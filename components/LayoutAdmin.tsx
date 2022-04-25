@@ -22,13 +22,7 @@ export const LayoutAdmin: FC = ({ children }) => {
   const router = useRouter();
   return (
     <>
-      <Tab.Group defaultIndex={router.asPath.match(/quizz/g) ? 0 : 1}>
-        <Tab.List className="border-b border-[#c6a346] flex">
-          <TabStyled href="/admin/quizz">quizz</TabStyled>
-          <TabStyled href="/admin/defi">Defi</TabStyled>
-        </Tab.List>
-      </Tab.Group>
-      <div className="h-full flex justify-center mt-10">
+      <div className="h-full flex justify-center ">
         <div className="w-full">{children}</div>
       </div>
     </>
