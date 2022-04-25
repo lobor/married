@@ -16,7 +16,7 @@ export const ResultQuizz = () => {
   const nbUser = (responseData && uniqBy(responseData, "user_id").length) || 0;
   console.log("responseData", responseData);
   const responseOnUserByQuestion = useMemo<any[]>(() => {
-    return responseData?.filter(({ user_id }) => user_id === user?.id);
+    return (responseData || []).filter(({ user_id }) => user_id === user?.id);
   }, [responseData, user]);
   const data = useMemo(() => {
     if (!responseData) {
