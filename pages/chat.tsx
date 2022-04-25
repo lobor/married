@@ -15,7 +15,6 @@ const Chat = () => {
     async onSubmit(values) {
       await execute({
         ...values,
-        table: localStorage.getItem("table"),
         user_id: user?.id,
         pseudo,
       });
@@ -57,7 +56,7 @@ const Chat = () => {
           onSubmit={handlePseudo}
         >
           <label className="text-center mb-5 ">
-            Veuillez rentrer un pseudo afin d&apos;acceder au chat
+            Veuillez rentrer un pseudo afin d&apos;accéder au chat
             <br />
             <br />
             <input
@@ -102,7 +101,7 @@ const Chat = () => {
           );
         })}
       </div>
-      <form onSubmit={formik.handleSubmit} className="flex">
+      <form onSubmit={formik.handleSubmit} className="flex p-[5px]">
         <textarea
           className="flex-1 rounded-md"
           rows={1}
@@ -117,7 +116,7 @@ const Chat = () => {
           }}
         />
         <button
-          className="bg-[#c6a346] rounded-md px-4 py-2 text-white"
+          className="bg-[#c6a346] rounded-md px-4 py-2 text-white ml-[5px]"
           type="submit"
           disabled={!formik.isValid || fetching}
         >

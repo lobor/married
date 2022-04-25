@@ -1,8 +1,14 @@
 import { useFormik } from "formik";
+import { useEffect } from "react";
+import { AiOutlineCamera } from "react-icons/ai";
 import { useInsert } from "react-supabase";
 import { string, object } from "yup";
+import { useTitle } from "../providers/title";
+import { useUser } from "../providers/user";
 
 const Menu = () => {
+  const { setTitle } = useTitle();
+  const { user } = useUser();
   const [{ data, fetching: loading, error }, execute] = useInsert("email");
   const formik = useFormik({
     validateOnMount: true,
@@ -13,27 +19,35 @@ const Menu = () => {
     }),
     initialValues: { email: "" },
     onSubmit(values) {
-      execute(values);
+      execute({ ...values, user_id: user?.id });
     },
   });
+  useEffect(() => {
+    setTitle("Photos");
+  }, []);
   return data && data.length > 0 ? (
     <div className="mt-16 text-center px-5">
       Votre email a bien été enregistré
     </div>
   ) : (
-    <div className="mt-16 text-center px-5">
-      Prise de photos en cours
+    <div className="text-center px-5">
+      <div className="flex justify-center text-[10em] text-[#c6a346]">
+        <AiOutlineCamera />
+      </div>
+      Prise de photos en cours...
       <br />
-      Laissez nous votre email
       <br />
-      Nous vous préviendrons lorsqu&apos;elles seront retouchées afin de vous mettre
-      en valeur
-      <form onSubmit={formik.handleSubmit} className="mt-16">
+      Laissez-nous votre email
+      <br />
+      Nous vous préviendrons lorsqu&apos;elles seront retouchées afin de vous
+      mettre en valeur
+      <form onSubmit={formik.handleSubmit} className="mt-5">
         <label className="block mb-5">
           <div>Email</div>
           <input
             type="email"
             name="email"
+            placeholder="orpheeetlionel@gmail.com"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -49,7 +63,7 @@ const Menu = () => {
           type="submit"
           disabled={!formik.isValid || loading}
         >
-          Je veux me voir
+          Enregistrer
         </button>
       </form>
     </div>

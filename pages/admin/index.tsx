@@ -14,9 +14,6 @@ const Home: NextPage = () => {
       <Link href="/admin/quizz">
         <a>quizz</a>
       </Link>
-      <Link href="/admin/elleetlui">
-        <a>Elle et lui</a>
-      </Link>
     </LayoutAdmin>
   );
 };

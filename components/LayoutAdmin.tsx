@@ -9,7 +9,6 @@ const TabStyled: FC<{ href: string }> = ({ children, href }) => {
     <Tab
       className={({ selected }) =>
         `${selected ? "bg-[#c6a346] text-white" : "text-black"} flex-1 flex`
-        
       }
     >
       <Link href={href}>
@@ -26,11 +25,11 @@ export const LayoutAdmin: FC = ({ children }) => {
       <Tab.Group defaultIndex={router.asPath.match(/quizz/g) ? 0 : 1}>
         <Tab.List className="border-b border-[#c6a346] flex">
           <TabStyled href="/admin/quizz">quizz</TabStyled>
-          <TabStyled href="/admin/elleetlui">Elle et lui</TabStyled>
+          <TabStyled href="/admin/defi">Defi</TabStyled>
         </Tab.List>
       </Tab.Group>
-      <div className="h-full flex justify-center items-center -mt-16">
-        {children}
+      <div className="h-full flex justify-center mt-10">
+        <div className="w-full">{children}</div>
       </div>
     </>
   );

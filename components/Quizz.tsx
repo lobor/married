@@ -11,33 +11,7 @@ import {
 import { useUser } from "../providers/user";
 import { questions } from "../utils/questions";
 import { Button } from "./Button";
-
-const Timer = ({ step }: { step: number }) => {
-  const [state, setState] = useState(false);
-  useEffect(() => {
-    setState(true);
-  }, [step]);
-  useEffect(() => {
-    if (state) {
-      setTimeout(() => setState(false), 9999);
-    }
-  }, [state]);
-  return (
-    <div className={`h-1 mb-8 ${!state && "bg-[#c6a346]"}`}>
-      <Transition
-        show={state}
-        // appear
-        unmount={false}
-        enter="transform transition-width ease-linear duration-[9999ms]"
-        enterFrom="w-0"
-        enterTo="w-full"
-        leave="w-full"
-      >
-        <div className="h-1 bg-[#c6a346]"></div>
-      </Transition>
-    </div>
-  );
-};
+import { ResultQuizz } from "./ResultQuizz";
 
 export const Quizz = ({ data }: { data: any }) => {
   const { user } = useUser();
@@ -64,19 +38,16 @@ export const Quizz = ({ data }: { data: any }) => {
   return (
     <>
       {start && questions[step] && (
-        <div className="w-full">
-          <div className="text-center text-xl mb-3">
-            {step + 1} - {questions[step].question}
-          </div>
-          <div>
-            <Timer step={step} />
+        <div className="w-full px-10">
+          <div className="text-center text-xl mb-10">
+            {step + 1}/{questions.length}<br />{questions[step].question}
           </div>
           <div className="grid grid-cols-1 gap-5 px-3 w-full">
             {questions[step].reponses.map((response, i) => (
               <label
                 className={`${
-                  Number(responseData?.response) === i ? "scale-[1.05]" : ""
-                } bg-[#c6a346] rounded-md px-4 py-2 text-white`}
+                  Number(responseData?.response) === i ? "scale-[1.05]" : "opacity-70"
+                } bg-[#c6a346] rounded-md px-4 py-2 text-white text-center`}
                 key={response}
               >
                 <input
@@ -109,7 +80,7 @@ export const Quizz = ({ data }: { data: any }) => {
           </div>
         </div>
       )}
-      {start && !questions[step] && <div>finish</div>}
+      {start && !questions[step] && <ResultQuizz />}
     </>
   );
 };
