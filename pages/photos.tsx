@@ -39,15 +39,14 @@ const Menu = () => {
       <br />
       Laissez-nous votre email
       <br />
-      Nous vous préviendrons lorsqu&apos;elles seront retouchées afin de vous
-      mettre en valeur
+      Nous vous préviendrons lorsqu&apos;elles seront disponibles
       <form onSubmit={formik.handleSubmit} className="mt-5">
         <label className="block mb-5">
           <div>Email</div>
           <input
             type="email"
             name="email"
-            placeholder="orpheeetlionel@gmail.com"
+            placeholder="Exemple: orpheeetlionel@gmail.com"
             value={formik.values.email}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}

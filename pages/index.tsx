@@ -17,16 +17,13 @@ const Home: NextPage = () => {
         <div className="text-xl mb-10">Bienvenue à notre mariage</div>
         <div className="mb-5">
           Nous sommes sur un petit nuage et nous souhaitons partager tout ce
-          bonheur avec toi. C’est pour ça que nous préparons un mariage de rêve
-          qui marquera les esprits de tous et au cours duquel tu t&apos;amuseras
-          comme un fou.
+          bonheur avec toi.
         </div>
         <div className="mb-5">
-          En attendant le grand jour, nous avons créé ce site composé de
-          diverses sections afin de te tenir au courant de l’avancée du mariage
-          et partager notre histoire.
+          Pour ce grand jour, nous avons créé ce site composé de
+          diverses sections afin de te partager notre histoire et de rendre celui-ci &quot;high-tech&quot;.
         </div>
-        <div className="mb-10">Bonne lecture et à très bientôt !</div>
+        <div className="mb-10">Bonne lecture et amuse toi !</div>
       </main>
     </>
   );

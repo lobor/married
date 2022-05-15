@@ -1,9 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
 import { useEffect } from "react";
 import { useTitle } from "../providers/title";
-import Nous from "../public/nous_rounded.png";
 
 const Home: NextPage = () => {
   const { setTitle } = useTitle();
@@ -40,15 +38,16 @@ const Home: NextPage = () => {
             Lui
           </h2>
           <div className="px-5">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum
+            Petit, il se surnommait &quot;Yoyo roi beau lion fort&quot;. Puis en
+            grandissant il a gardé yoyo pour les intimes. Souvent dans sa bulle,
+            c’est un passionné de jeux vidéo, de développement et tout ce qui
+            touche à un ordinateur. S’il le pouvait, il inscrirait ses ordinateurs sur
+            son livret de famille, en plus de ses enfants.
+            Attention, ne vous y trompez pas il adore faire la fête (sinon ce ne
+            serait pas un gémeaux). Jack est son ami, celui de la famille Daniel’s. 
+            Par-dessus tout il aime être entouré, recevoir, faire un
+            bon barbecue et discuter autour du feu pendant des heures. Je
+            l’appelle « mon cœur »
           </div>
           <div className="h-[1px] bg-[#c6a346] my-10 mx-2" />
           <div className="bg-[url('/enfants.JPG')] h-[10rem] bg-no-repeat bg-contain bg-center" />

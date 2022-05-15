@@ -55,16 +55,17 @@ const Home: NextPage = () => {
       )}
       {state && state.quizz && (
         <div className="w-full">
-          {step < questions.length && (
-            <div className="flex row justify-between mb-10 px-5">
-              <Button onClick={prev} disabled={step === 0}>
-                {"<"} Précédent
-              </Button>
-              <Button onClick={next} disabled={step === questions.length}>
-                Suivant {">"}
-              </Button>
-            </div>
-          )}
+          <div className="flex row justify-between mb-10 px-5">
+            <Button
+              onClick={prev}
+              disabled={step === 0}
+            >
+              {"<"} Précédent
+            </Button>
+            <Button onClick={next} disabled={step === questions.length}>
+              Suivant {">"}
+            </Button>
+          </div>
           <Quizz data={state} />
         </div>
       )}
