@@ -21,7 +21,7 @@ const Home: NextPage = () => {
         </div>
         <div className="mb-5">
           Pour ce grand jour, nous avons créé ce site composé de
-          diverses sections afin de te partager notre histoire et de rendre celui-ci &quot;high-tech&quot;.
+          diverses sections afin de te partager notre histoire et rendre celui-ci &quot;high-tech&quot;.
         </div>
         <div className="mb-10">Bonne lecture et amuse toi !</div>
       </main>

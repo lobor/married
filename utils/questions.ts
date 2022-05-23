@@ -54,7 +54,7 @@ export const questions = [
   {
     question: "En quelle année ont-ils acheté leur maison ?",
     reponses: ["2016", "2017", "2018", "2019"],
-    indexResponse: [1],
+    indexResponse: [2],
   },
   {
     question: "Combien de fois ont-ils déménagés ensemble ?",
@@ -93,7 +93,7 @@ export const questions = [
   },
   {
     question: "(Elle) Quel est son plat préféré ?",
-    reponses: ["Lasagnes", "Ndolé", "Tajine", "Barbecue"],
+    reponses: ["Lasagnes", "Ndolè", "Tajine", "Barbecue"],
     indexResponse: [1],
   },
 ];
